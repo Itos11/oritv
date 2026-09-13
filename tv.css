@@ -1,30 +1,15 @@
-/* OriTV TV / LG webOS scaling */
-@media (max-width:1100px){
-  .topbar{top:14px;height:70px;padding:0 28px}
-  .brand{font-size:22px}
-  .brand-mark{width:36px;height:36px;border-radius:10px}
-  .nav-pill{padding:6px;border-radius:20px}
-  .nav-item{padding:14px 18px;font-size:15px}
-  .icon-btn{width:46px;height:46px;font-size:27px}
-  .hero{height:80vh;min-height:620px;padding:0 7vw 82px}
-  .hero h1{font-size:72px}
-  .eyebrow{font-size:15px}
-  .tagline{font-size:21px}
-  .meta{font-size:16px}
-  .tag{font-size:14px;padding:9px 13px}
-  .action{min-height:48px;padding:13px 21px;font-size:15px}
-  .rows{margin-top:-65px}
-  .row-title{font-size:24px;margin-bottom:15px}
-  .cards{gap:16px;padding-bottom:24px}
-  .card{flex-basis:220px;height:320px;border-radius:16px}
-  .card-title{font-size:15px}
-  .card-sub{font-size:13px}
-  .card-rating{font-size:13px;padding:5px 7px}
-  .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-  .grid .card{height:320px}
-  .page-title{font-size:46px}
-  .settings h1{font-size:46px}
-  .setting{min-height:150px;padding:26px}
-  .setting small{font-size:14px}
-  .detail-info h1{font-size:70px}
+/* OriTV TV / LG webOS — large-screen UI */
+@media (min-width:1101px){
+  .topbar{top:24px;height:78px;padding:0 52px}.brand{font-size:25px;gap:10px}.brand-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#168cff,#7bd7ff);color:#07101c}
+  .nav-pill{padding:7px;border-radius:24px}.nav-item{padding:15px 20px;font-size:17px;border-radius:16px}.nav-item.active{background:linear-gradient(135deg,#168cff,#1168d8);box-shadow:0 0 22px #168cff55;color:#fff}
+  .icon-btn{width:54px;height:54px;font-size:31px;border-radius:16px}.hero{height:78vh;min-height:680px;padding:0 7vw 92px}.hero h1{font-size:78px}.eyebrow{font-size:16px;color:#49b7ff}.tagline{font-size:23px}.meta{font-size:17px}.tag{font-size:15px;padding:10px 14px}
+  .action{min-height:54px;padding:14px 24px;font-size:17px;border-radius:14px}.primary{background:linear-gradient(135deg,#168cff,#ff8a24);color:#fff;box-shadow:0 8px 30px #168cff35}
+  .rows{margin-top:-70px}.row-title{font-size:27px;margin-bottom:17px}.cards{gap:18px;padding-bottom:28px}.card{flex-basis:245px;height:350px;border-radius:18px}.card-title{font-size:16px}.card-sub{font-size:14px}.card-rating{font-size:14px;padding:6px 8px;color:#fff;background:#1168d8dd}
+  .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}.grid .card{height:350px}.page-title{font-size:52px;margin-top:145px}.settings h1{font-size:52px}.setting{min-height:170px;padding:30px}.setting small{font-size:15px}.setting-icon{color:#49b7ff}.detail-info h1{font-size:76px}
+}
+@media (max-width:1100px) and (min-height:600px){
+  .topbar{top:14px;height:70px;padding:0 28px}.brand{font-size:22px}.brand-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#168cff,#7bd7ff);color:#07101c}
+  .nav-pill{padding:6px;border-radius:20px}.nav-item{padding:14px 18px;font-size:15px}.nav-item.active{background:#168cff;box-shadow:0 0 18px #168cff55}.icon-btn{width:46px;height:46px;font-size:27px}
+  .hero{height:80vh;min-height:620px;padding:0 7vw 82px}.hero h1{font-size:72px}.eyebrow{font-size:15px;color:#49b7ff}.tagline{font-size:21px}.meta{font-size:16px}.tag{font-size:14px;padding:9px 13px}.action{min-height:48px;padding:13px 21px;font-size:15px}.primary{background:linear-gradient(135deg,#168cff,#ff8a24);color:#fff}
+  .row-title{font-size:24px;margin-bottom:15px}.cards{gap:16px;padding-bottom:24px}.card{flex-basis:220px;height:320px;border-radius:16px}.card-title{font-size:15px}.card-sub{font-size:13px}.card-rating{font-size:13px;padding:5px 7px;background:#1168d8dd;color:#fff}.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.grid .card{height:320px}
 }
