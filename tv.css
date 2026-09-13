@@ -1,0 +1,30 @@
+/* OriTV TV / LG webOS scaling */
+@media (max-width:1100px){
+  .topbar{top:14px;height:70px;padding:0 28px}
+  .brand{font-size:22px}
+  .brand-mark{width:36px;height:36px;border-radius:10px}
+  .nav-pill{padding:6px;border-radius:20px}
+  .nav-item{padding:14px 18px;font-size:15px}
+  .icon-btn{width:46px;height:46px;font-size:27px}
+  .hero{height:80vh;min-height:620px;padding:0 7vw 82px}
+  .hero h1{font-size:72px}
+  .eyebrow{font-size:15px}
+  .tagline{font-size:21px}
+  .meta{font-size:16px}
+  .tag{font-size:14px;padding:9px 13px}
+  .action{min-height:48px;padding:13px 21px;font-size:15px}
+  .rows{margin-top:-65px}
+  .row-title{font-size:24px;margin-bottom:15px}
+  .cards{gap:16px;padding-bottom:24px}
+  .card{flex-basis:220px;height:320px;border-radius:16px}
+  .card-title{font-size:15px}
+  .card-sub{font-size:13px}
+  .card-rating{font-size:13px;padding:5px 7px}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .grid .card{height:320px}
+  .page-title{font-size:46px}
+  .settings h1{font-size:46px}
+  .setting{min-height:150px;padding:26px}
+  .setting small{font-size:14px}
+  .detail-info h1{font-size:70px}
+}
