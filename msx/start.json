@@ -1,0 +1,5 @@
+{
+  "name": "OriTV Launcher",
+  "version": "1.0.0",
+  "parameter": "menu:https://itos11.github.io/oritv/msx/menu.json"
+}
