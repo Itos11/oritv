@@ -1,0 +1,22 @@
+{
+  "name": "OriTV Home",
+  "version": "1.0.0",
+  "style": "default",
+  "headline": "OriTV",
+  "menu": [
+    {
+      "id": "oritv",
+      "type": "button",
+      "icon": "movie",
+      "label": "OriTV",
+      "action": "link:https://itos11.github.io/oritv/"
+    },
+    {
+      "id": "prisma",
+      "type": "button",
+      "icon": "apps",
+      "label": "Prisma",
+      "action": "link:http://prisma.ws"
+    }
+  ]
+}
