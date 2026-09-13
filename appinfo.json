@@ -1,0 +1,12 @@
+{
+  "id": "com.oritv.app",
+  "version": "1.0.0",
+  "type": "web",
+  "main": "index.html",
+  "title": "OriTV",
+  "icon": "icon.png",
+  "largeIcon": "largeicon.png",
+  "vendor": "OriTV",
+  "resolution": "1920x1080",
+  "disableBackHistoryAPI": false
+}
