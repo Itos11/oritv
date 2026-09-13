@@ -1,0 +1,1 @@
+window.OriTVConfig={appName:'OriTV',sources:[],storageKey:'oritv'};
