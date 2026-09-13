@@ -1,21 +1,21 @@
-/* OriTV TV layer — platform-neutral, tuned for 10-foot interfaces */
+/* OriTV TV / desktop / mobile universal layer */
 html,body{font-size:16px}
 .view{scroll-padding-top:120px}
-@media (min-width:1101px){
- .topbar{top:20px;height:78px;padding:0 50px}
- .brand{font-size:25px}.brand-mark{width:44px;height:44px;border-radius:13px}
- .nav-pill{padding:7px;border-radius:25px}.nav-item{padding:15px 17px;font-size:16px}
- .icon-btn{width:56px;height:56px;font-size:32px}
- .hero{height:72vh;min-height:650px;padding:0 7vw 92px}.hero h1{font-size:84px}
- .cards{gap:22px;padding-bottom:34px}.card{flex-basis:310px;height:440px}
- .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}.grid .card{height:440px}
- .row-title{font-size:30px}.page-title,.settings h1{font-size:56px}
+@media (min-width:1400px){
+ .topbar{top:22px;height:82px;padding:0 52px}.brand{font-size:29px}.brand-mark{width:50px;height:50px;border-radius:15px}
+ .nav-pill{padding:8px;border-radius:28px;max-width:none}.nav-item{padding:16px 21px;font-size:18px;border-radius:18px}
+ .icon-btn{width:62px;height:62px;font-size:36px;border-radius:17px}
+ .hero{height:55vh;min-height:500px;padding:0 7vw 62px}.hero h1{font-size:78px}.rows{margin-top:0}
+ .cards{gap:22px;padding-bottom:34px}.card{flex-basis:290px;height:410px;border-radius:20px}.grid .card{height:410px}.row{margin-bottom:38px}.row-title{font-size:31px;margin-left:4vw}
 }
-@media (max-width:1100px){
- .topbar{top:9px;height:72px;padding:0 24px}.brand{font-size:22px}.brand-mark{width:40px;height:40px;border-radius:11px}
- .nav-pill{max-width:72vw;padding:6px;border-radius:22px}.nav-item{padding:13px 14px;font-size:16px;border-radius:15px}
- .icon-btn{width:49px;height:49px;font-size:29px}
- .hero{height:66vh;min-height:430px;padding:0 6vw 64px}.hero h1{font-size:68px}.tagline{font-size:20px}.meta{font-size:16px}
- .card{flex-basis:280px;height:395px;border-radius:17px}.grid .card{height:395px}.row-title{font-size:27px}.focusable.focused{outline-width:4px}
+@media (min-width:900px) and (max-width:1399px){
+ .topbar{top:16px;height:74px;padding:0 34px}.brand{font-size:25px}.brand-mark{width:44px;height:44px}
+ .nav-pill{padding:7px}.nav-item{padding:14px 16px;font-size:16px}.icon-btn{width:56px;height:56px;font-size:32px}
+ .hero{height:56vh;min-height:430px;padding:0 6vw 54px}.hero h1{font-size:66px}.rows{margin-top:0}
+ .cards{gap:18px}.card{flex-basis:250px;height:350px}.grid .card{height:350px}.row-title{font-size:28px}
 }
-@media (max-width:700px){.nav-pill{display:none}.hero h1{font-size:48px}.card{flex-basis:190px;height:280px}.grid .card{height:280px}}
+@media (max-width:899px){
+ .topbar{top:8px;height:64px;padding:0 18px}.brand{font-size:21px}.brand-mark{width:38px;height:38px;border-radius:11px}.nav-pill{display:none}.icon-btn{width:48px;height:48px;font-size:28px}
+ .hero{height:58vh;min-height:390px;padding:0 5vw 42px}.hero h1{font-size:46px}.tagline{font-size:18px}.rows{margin-top:0}.row-title{font-size:23px}.card{flex-basis:190px;height:280px}.grid .card{height:280px}
+}
+.focusable.focused{outline:4px solid #168cff;outline-offset:4px;box-shadow:0 0 0 8px #168cff2b,0 0 28px #168cff66}
