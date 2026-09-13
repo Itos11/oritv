@@ -1,26 +1,21 @@
-/* OriTV — LG webOS / Media Station X TV overrides */
+/* OriTV TV layer — platform-neutral, tuned for 10-foot interfaces */
 html,body{font-size:16px}
-.view{scroll-padding-top:110px}
+.view{scroll-padding-top:120px}
 @media (min-width:1101px){
  .topbar{top:20px;height:78px;padding:0 50px}
  .brand{font-size:25px}.brand-mark{width:44px;height:44px;border-radius:13px}
  .nav-pill{padding:7px;border-radius:25px}.nav-item{padding:15px 17px;font-size:16px}
  .icon-btn{width:56px;height:56px;font-size:32px}
  .hero{height:72vh;min-height:650px;padding:0 7vw 92px}.hero h1{font-size:84px}
- .cards{gap:20px;padding-bottom:30px}.card{flex-basis:265px;height:375px}
- .grid .card{height:375px}.row-title{font-size:29px}
+ .cards{gap:22px;padding-bottom:34px}.card{flex-basis:310px;height:440px}
+ .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}.grid .card{height:440px}
+ .row-title{font-size:30px}.page-title,.settings h1{font-size:56px}
 }
 @media (max-width:1100px){
- .topbar{top:9px;height:72px;padding:0 24px}
- .brand{font-size:22px}.brand-mark{width:40px;height:40px;border-radius:11px}
- .nav-pill{max-width:72vw;padding:6px;border-radius:22px}
- .nav-item{padding:13px 14px;font-size:16px;border-radius:15px}
+ .topbar{top:9px;height:72px;padding:0 24px}.brand{font-size:22px}.brand-mark{width:40px;height:40px;border-radius:11px}
+ .nav-pill{max-width:72vw;padding:6px;border-radius:22px}.nav-item{padding:13px 14px;font-size:16px;border-radius:15px}
  .icon-btn{width:49px;height:49px;font-size:29px}
- .hero{height:66vh;min-height:430px;padding:0 6vw 64px}
- .hero h1{font-size:68px}
- .tagline{font-size:20px}.meta{font-size:16px}
- .card{flex-basis:250px;height:350px;border-radius:17px}
- .grid .card{height:350px}.row-title{font-size:27px}
- .focusable.focused{outline-width:4px}
+ .hero{height:66vh;min-height:430px;padding:0 6vw 64px}.hero h1{font-size:68px}.tagline{font-size:20px}.meta{font-size:16px}
+ .card{flex-basis:280px;height:395px;border-radius:17px}.grid .card{height:395px}.row-title{font-size:27px}.focusable.focused{outline-width:4px}
 }
 @media (max-width:700px){.nav-pill{display:none}.hero h1{font-size:48px}.card{flex-basis:190px;height:280px}.grid .card{height:280px}}
