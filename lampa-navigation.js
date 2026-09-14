@@ -1,7 +1,6 @@
-/* OriTV unified navigation — Lampa-style input/focus architecture */
+/* OriTV navigation — based on Lampa Controller model: focus is separate from native touch scrolling */
 (()=>{'use strict';
-const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
-let focused=null;
+const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];let focused=null;
 const visible=e=>{if(!e||e.disabled)return false;const r=e.getBoundingClientRect(),c=getComputedStyle(e);return c.display!=='none'&&c.visibility!=='hidden'&&r.width>0&&r.height>0};
 const items=()=>qa('.focusable').filter(visible);
 function focus(el){if(!visible(el))return;qa('.focused').forEach(x=>x.classList.remove('focused'));focused=el;el.classList.add('focused');try{el.scrollIntoView({block:'nearest',inline:'nearest'})}catch(_){} }
@@ -11,7 +10,7 @@ function nearest(dir){const from=current();if(!from)return null;const r=from.get
 function move(dir){const n=nearest(dir);if(n)focus(n)}
 function closeOverlay(){const detail=q('#detail'),search=q('#search');if(detail&&!detail.classList.contains('hidden')){detail.classList.add('hidden');if(location.hash.startsWith('#/detail/'))history.back();return true}if(search&&!search.classList.contains('hidden')){search.classList.add('hidden');return true}return false}
 function back(){if(closeOverlay())return true;if(typeof window.goBack==='function'){window.goBack();return true}if(window.OriTVEngine?.back){window.OriTVEngine.back();return true}history.back();return true}
-function bind(){document.addEventListener('focusin',e=>{if(e.target.classList.contains('focusable'))focus(e.target)});new MutationObserver(()=>{if(!visible(focused)){const f=q('.focused')||items()[0];if(f)focus(f)}}).observe(document.body,{subtree:true,childList:true})}
+function bind(){document.addEventListener('focusin',e=>{if(e.target.classList.contains('focusable'))focus(e.target)});new MutationObserver(()=>{if(!visible(focused)){const f=q('.focused')||items()[0];if(f)focus(f)}}).observe(document.body,{subtree:true,childList:true});}
 window.OriTVNavigation={focus,activate,move,back,nearest,current,items};window.OriTVLampaNavigation=window.OriTVNavigation;
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();
 })();
