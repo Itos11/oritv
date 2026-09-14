@@ -1,0 +1,1 @@
+OriTV Lampa engine transfer v1: platform, storage, events, controller bridge, favorites, timeline, API adapter, HTML5/WebOS-aware player adapter.
