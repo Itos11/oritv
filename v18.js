@@ -1,0 +1,4 @@
+(()=>{'use strict';
+function mount(){const hero=document.querySelector('.hero');if(!hero||hero.querySelector('.oritv-hero-panel'))return;if(window.innerWidth<1101)return;const p=document.createElement('aside');p.className='oritv-hero-panel';p.innerHTML='<div class="panel-eyebrow">РЕЙТИНГ ORITV</div><div class="panel-rating">8.4 <span>РЕЙТИНГ</span></div><div class="panel-meta">Фантастика · 2026 · Оригинальная премьера</div><div class="panel-tags"><span>4K</span><span>HDR</span><span>ORIGINAL</span></div><div class="panel-line"></div><div class="panel-note">Путь домой становится последней надеждой.</div>';hero.appendChild(p)}
+window.addEventListener('load',()=>{mount();new MutationObserver(mount).observe(document.querySelector('#view')||document.body,{childList:true,subtree:true});});
+})();
