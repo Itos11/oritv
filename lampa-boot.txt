@@ -1,0 +1,1 @@
+Load lampa-engine.js before lampa-adapters.js and lampa-player.js. Keep the OriTV UI files unchanged.
