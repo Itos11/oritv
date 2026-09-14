@@ -1,0 +1,26 @@
+/* OriTV Core v20
+ * Lampa-inspired TV application engine. GPL-compatible adapted architecture.
+ * Interface intentionally remains separate.
+ */
+(()=>{'use strict';
+const S=window.OriTVLampaStorage||{get:(k,d)=>{try{return localStorage.getItem(k)||d}catch(_){return d}},set:(k,v)=>{try{localStorage.setItem(k,String(v))}catch(_){}}};
+const listeners={}; const controllers={}; let active='content'; let player=null;
+const on=(n,f)=>{(listeners[n]||(listeners[n]=[])).push(f);return()=>listeners[n]=listeners[n].filter(x=>x!==f)};
+const emit=(n,d)=>{(listeners[n]||[]).slice().forEach(f=>{try{f(d)}catch(e){console.error(e)}})};
+const addController=(n,c)=>controllers[n]=c;
+const toggle=n=>{if(controllers[n]){active=n;controllers[n].toggle&&controllers[n].toggle();emit('controller',{name:n})}};
+const key=e=>({37:'left',38:'up',39:'right',40:'down',13:'enter',461:'back',27:'back',8:'back',415:'play',19:'pause',417:'rewindForward',412:'rewindBack'})[e.keyCode||e.which];
+window.addEventListener('keydown',e=>{const k=key(e);if(!k)return;emit('remote',k);const c=controllers[active];if(c&&c[k]){e.preventDefault();c[k]()}});
+function historyAdd(data){if(!data||!data.id)return;let a=[];try{a=JSON.parse(localStorage.getItem('oritv-history')||'[]')}catch(_){};a=a.filter(x=>String(x.id)!==String(data.id));a.unshift({...data,updated:Date.now()});S.set('oritv-history',JSON.stringify(a.slice(0,100)))}
+function history(){try{return JSON.parse(localStorage.getItem('oritv-history')||'[]')}catch(_){return []}}
+function favorites(){try{return JSON.parse(localStorage.getItem('oritv-favorites')||'[]')}catch(_){return []}}
+function favorite(data){let a=favorites(),i=a.findIndex(x=>String(x.id)===String(data.id));if(i>=0)a.splice(i,1);else a.unshift(data);S.set('oritv-favorites',JSON.stringify(a));emit('favorite',{data,active:i<0});return i<0}
+function selectQuality(q){if(!q||typeof q!=='object')return q;const preferred=S.get('video_quality_default','');if(preferred&&q[preferred])return typeof q[preferred]==='string'?q[preferred]:q[preferred].url||'';return Object.keys(q).sort((a,b)=>parseInt(b)-parseInt(a)).map(k=>typeof q[k]==='string'?q[k]:q[k]&&q[k].url).find(Boolean)||''}
+function closePlayer(){if(player){try{player.pause()}catch(_){}try{player.remove()}catch(_){}player=null}emit('player:close');toggle('content')}
+function play(data){if(!data||!data.url)return false;closePlayer();historyAdd(data);const wrap=document.createElement('div');wrap.className='oritv-player';const v=document.createElement('video');v.className='oritv-video';v.controls=false;v.autoplay=true;v.playsInline=true;v.src=data.quality?selectQuality(data.quality):data.url;wrap.appendChild(v);const controls=document.createElement('div');controls.className='oritv-player-hud';controls.innerHTML='<button data-p="back">‹</button><span class="oritv-player-title"></span><button data-p="play">▶</button><button data-p="minus">−30</button><button data-p="plus">+30</button><span class="oritv-time"></span>';wrap.appendChild(controls);controls.querySelector('.oritv-player-title').textContent=data.title||'';document.body.appendChild(wrap);player=v;
+const progressKey='oritv-progress-'+data.id;let saved=parseFloat(S.get(progressKey,'0'))||0;v.addEventListener('loadedmetadata',()=>{if(saved>5&&saved<v.duration-15)v.currentTime=saved;emit('player:ready',data)});v.addEventListener('timeupdate',()=>{S.set(progressKey,Math.floor(v.currentTime));const t=controls.querySelector('.oritv-time');if(t)t.textContent=Math.floor(v.currentTime/60)+':'+String(Math.floor(v.currentTime%60)).padStart(2,'0')+' / '+(isFinite(v.duration)?Math.floor(v.duration/60)+':'+String(Math.floor(v.duration%60)).padStart(2,'0'):'--:--');emit('player:time',{current:v.currentTime,duration:v.duration})});v.addEventListener('ended',()=>{S.set(progressKey,'0');emit('player:end',data)});controls.addEventListener('click',e=>{const p=e.target.dataset.p;if(p==='back')closePlayer();if(p==='play')v.paused?v.play():v.pause();if(p==='minus')v.currentTime=Math.max(0,v.currentTime-30);if(p==='plus')v.currentTime=Math.min(v.duration||1,v.currentTime+30)});
+addController('player',{toggle(){},enter(){v.paused?v.play():v.pause()},play(){v.play()},pause(){v.pause()},rewindForward(){v.currentTime=Math.min(v.duration||1,v.currentTime+30)},rewindBack(){v.currentTime=Math.max(0,v.currentTime-30)},back(){closePlayer()},left(){v.currentTime=Math.max(0,v.currentTime-10)},right(){v.currentTime=Math.min(v.duration||1,v.currentTime+10)},up(){},down(){}});toggle('player');v.play().catch(()=>{});emit('player:open',data);return v}
+function webosPlay(data){if(window.webOS&&window.webOS.service&&data&&data.url){const launch=params=>window.webOS.service.request('luna://com.webos.applicationManager',{method:'launch',parameters:{id:params.id,params:{payload:[{fullPath:params.url,mediaType:'VIDEO',fileName:params.name||params.title||'OriTV',lastPlayPosition:params.position||-1}]}}});launch({id:'com.webos.app.photovideo',url:data.url,name:data.title,position:0});emit('player:webos',data);return true}return false}
+window.OriTVCore={version:'20.0.0',on,emit,addController,toggle,play,closePlayer,webosPlay,history,favorites,favorite,historyAdd,selectQuality,storage:S};
+addController('content',{back(){if(window.closeDetail)window.closeDetail();else history.back()}});
+})();
