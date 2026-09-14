@@ -1,0 +1,1 @@
+The remote controller bridge will use OriTVLampaEngine.Controller and keep the current OriTV interface unchanged.
